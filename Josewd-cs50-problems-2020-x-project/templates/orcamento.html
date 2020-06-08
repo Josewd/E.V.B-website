@@ -1,0 +1,58 @@
+{% extends "layout.html" %}
+
+{% block body%}
+<h2 style='text-align: center;' class="display-4">Preencha todos os campos </h2>
+<h2 style='text-align: center;'class="display-4">e retonarmos por email!</h2>
+    <form action="/orcamento" method="post">
+        <script>
+            let counter = 0.00;
+            function somar(v)
+            {
+                counter = 0.00;
+                counter+= v
+                document.getElementById('price').value= counter;
+            }
+            function add(v)
+            {
+
+                counter+= v
+                document.getElementById('price').value= counter;
+            }
+            function Zero()
+            {
+                counter = 0.00;
+                document.getElementById('price').value= counter;
+            }
+    </script>
+        <div class="form-group">
+            <input autocomplete="off" autofocus class="form-control" name="company_name" placeholder="Nome da empresa" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="email" placeholder="email" type="email">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="collector" placeholder="endereco de coleta" type="text">
+        </div>
+        <div class="form-group">
+            <input class="form-control" name="delivery" placeholder="endereco de entrega" type="text">
+        </div>
+       <div>
+            <button type="button" class="btn btn-outline-success"onclick='somar(18,00)'>Ate 4km</button>
+            <button type="button" class="btn btn-outline-success"onclick='somar(20,00)'>4,1 - 5,9km</button>
+            <button type="button" class="btn btn-outline-success"onclick='somar(22,00)'>6 - 7,9km</button>
+            <button type="button" class="btn btn-outline-success"onclick='somar(25,00)'>8 - 9,9km</button>
+            <button type="button" class="btn btn-outline-success"onclick='somar(28,00)'>10 - 11,9km</button>
+            <button type="button" class="btn btn-outline-success"onclick='add(2,50)'>1 km adicional</button>
+            <button type="button" class="btn btn-outline-success"onclick='Zero()'>Zerar km</button>
+
+            </div>
+            <div class="form-group">
+            <input class="form-control" id='price'name="price" placeholder="auto-preencimento" type="number" value='0.00'>
+        </div>
+        <div class="form-group">
+            <input class="form-control" id='km' name="km" placeholder="distancia em km ex: 12,5" type="number">
+        </div>
+        <button class="btn btn-primary" type="submit">enviar</button>
+    </form>
+
+    {% endblock %}

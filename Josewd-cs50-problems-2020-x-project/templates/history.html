@@ -1,0 +1,34 @@
+{% extends "layout.html" %}
+
+{% block body%}
+    <form action='/history' method='post'>
+        <input type='text' name='company' placeholder='Nome da empresa'>
+        <input type='submit' Value= 'buscar historico'>
+        </form>
+     <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Empresa</th>
+                <th>End. Coleta</th>
+                <th>End. Entrega</th>
+                <th>Distancia</th>
+                <th>Valor</th>
+                <th>Data do orcamento</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for history in history %}
+                <tr>
+                    <td>{{ history.company }}</td>
+                    <td>{{ history.collect_adress }}</td>
+                    <td>{{ history.delivery_adress }}</td>
+                    <td>{{ history.km }}</td>
+                    <td>{{ history.price }} R$</td>
+                    <td>{{ history.register_at }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+{% endblock%}
